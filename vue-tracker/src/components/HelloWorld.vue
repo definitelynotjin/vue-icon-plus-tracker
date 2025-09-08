@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 defineProps<{
   msg: string
 }>()
@@ -23,6 +24,10 @@ h1 {
   top: -10px;
 }
 
+h2 {
+  background-color: red;
+}
+
 h3 {
   font-size: 1.2rem;
 }
@@ -33,6 +38,7 @@ h3 {
 }
 
 @media (min-width: 1024px) {
+
   .greetings h1,
   .greetings h3 {
     text-align: left;
