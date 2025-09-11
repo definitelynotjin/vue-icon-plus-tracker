@@ -2,13 +2,12 @@
   import CircleAlert from 'lucide-vue-next'
   import { ref } from 'vue'
   import { useRouter } from 'vue-router'
-  import { useToast } from '@/components/ui/toast/use-toast'
-  import Logo from '../assets/logo.png'
+  import { useToast } from '@/components/ui/toast/use-toast'  import Logo from '../assets/logo.png'
 
   const router = useRouter()
-  const { toast } = useToast()
+ const { toast } = useToast()
 
-  const username = ref('')
+const username = ref('')
   const password = ref('')
   const show1 = ref(false)
   const valid = ref(false)
