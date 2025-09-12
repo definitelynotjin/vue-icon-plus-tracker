@@ -1,12 +1,8 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
-  <v-app>
-    <v-container class="!bg-blue-400 text-green-200">
-      this is the kanbanboard okay
-    </v-container>
-
+  <v-app class="fill-height bg-red-800">
+    <v-row class="ma-5 pa-5 bg-green-900 " />
   </v-app>
 </template>

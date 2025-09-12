@@ -1,18 +1,24 @@
 <script setup lang="ts">
+
   import { Calendar, SquareKanban, LayoutDashboard } from 'lucide-vue-next'
+  import { RouterLink } from 'vue-router'
   import {
     Sidebar,
     SidebarContent,
     SidebarGroup,
+    SidebarGroupContent,
     SidebarHeader,
     SidebarMenu,
     SidebarMenuItem,
     SidebarMenuButton,
+    SidebarFooter,
   } from '@/components/ui/sidebar'
+  import Logo from '../assets/logo.png'
+
   const items = [
     {
       title: 'Dashboard',
-      url: '/Dashboard',
+      url: '/dashboard',
       icon: LayoutDashboard,
     },
     {
@@ -26,24 +32,30 @@
       icon: Calendar,
     },
   ]
+
 </script>
 
 <template>
-  <Sidebar collapsible="icon" side="left">
-    <SidebarHeader />
+  <Sidebar collapsible="icon">
     <SidebarContent>
       <SidebarGroup>
         <SidebarGroupContent>
-          <SidebarMenu>
-            <SidebarMenuItem v-for="item in items" :key="item.title">
-              <SidebarMenuButton as-child>
-                <a :href="item.url">
-                  <component :is="item.icon" />
-                  <span>{{ item.title }}</span>
-                </a>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
+          <SidebarHeader />
+          <v-row class="bg-blue-700">
+            <v-img :height="40" :src="Logo" :width="50" />
+          </v-row>
+          <SidebarFooter>
+            <SidebarMenu class="flex flex-col justify-evenly h-full">
+              <SidebarMenuItem v-for="item in items" :key="item.title" class="flex-5">
+                <SidebarMenuButton as-child>
+                  <RouterLink class="flex" :to="item.url">
+                    <component :is="item.icon" class="m-8 text-xl text-blue-500" :size="40" />
+                    <span>{{ item.title }}</span>
+                  </RouterLink>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarFooter>
         </SidebarGroupContent>
       </SidebarGroup>
     </SidebarContent>

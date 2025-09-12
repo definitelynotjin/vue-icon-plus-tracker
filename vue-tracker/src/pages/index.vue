@@ -1,13 +1,12 @@
 <script setup lang="ts">
-  import CircleAlert from 'lucide-vue-next'
   import { ref } from 'vue'
   import { useRouter } from 'vue-router'
-  import { useToast } from '@/components/ui/toast/use-toast'  import Logo from '../assets/logo.png'
+  import { useToast } from '@/components/ui/toast/use-toast'
+  import Logo from '../assets/logo.png'
 
+  const { toast } = useToast()
   const router = useRouter()
- const { toast } = useToast()
-
-const username = ref('')
+  const username = ref('')
   const password = ref('')
   const show1 = ref(false)
   const valid = ref(false)
@@ -21,6 +20,7 @@ const username = ref('')
     (v: string) => !!v || 'Password is required',
     (v: string) => (v && v.length <= 6) || 'Password must be less than 6 characters',
   ]
+
   function handleLogin () {
     if (username.value === 'Admin' && password.value === '1234') {
       localStorage.setItem('isLoggedIn', 'true')
@@ -28,8 +28,9 @@ const username = ref('')
     } else {
       toast({
         title: 'Invalid Credentials!',
-        description: 'Make sure you have entered the right username or password',
+        description: 'Make sure you inserted the username or password correctly',
         variant: 'destructive',
+
       })
     }
   }
@@ -40,15 +41,17 @@ const username = ref('')
     <v-row class="ma-10 pa-10">
       <v-col class="bg-gray-900 rounded-tl-2xl rounded-bl-2xl d-flex ">
         <v-row align="center">
-          <v-img :height="200" :src="Logo" :width="200" />
+          <v-img :height="150" :src="Logo" :width="150" />
         </v-row>
       </v-col>
       <v-col class="bg-slate-100 rounded-tr-2xl rounded-br-2xl flex  items-center justify-center">
-        <!-- <v-row class="bg-red-200"> -->
-        <!--   <v-col align="center"> -->
-        <!--   </v-col> -->
-        <!-- </v-row> -->
-        <v-form v-model="valid" class="w-full text-gray-900 flex flex-col gap-4 max-w-md" @submit.prevent="handleLogin">
+        <v-form v-model="valid" class="w-full !text-gray-900 flex flex-col gap-4 max-w-md" @submit.prevent="handleLogin">
+          <h1 class="text-h3 font-bold text-gray-700">
+            Login
+          </h1>
+          <h2 class="top-auto text-gray-500">
+            Enter your user valid username and password.
+          </h2>
           <v-text-field
             v-model="username"
             bg-color="blue-grey-darken-3"

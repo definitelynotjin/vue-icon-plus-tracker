@@ -1,12 +1,17 @@
 <script setup lang="ts">
+  import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+  } from '@/components/ui/table'
 </script>
 
 <template>
-  <v-app class="fill-height bg-red-800">
-    <v-row class="fill-height pa-5 ma-5">
-      <v-row class="bg-blue-900  fill-height">
-        the fuck is going on
-      </v-row>
-    </v-row>
+  <v-app class="min-h-screen bg-red-800">
+    <v-row class="ma-5 pa-5 bg-blue-900 fill-height" />
   </v-app>
 </template>
