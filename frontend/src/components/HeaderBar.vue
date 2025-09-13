@@ -11,11 +11,11 @@
 </script>
 
 <template>
-  <v-app-bar class="ps-4 text-red-400 !bg-gray-900" flat>
+  <v-app-bar class="ps-4 !bg-green-900" flat>
     <v-app-bar-title class="!text-red-500 font-bold">This the header bar eh</v-app-bar-title>
     <v-btn
       :append-inner-icon="LogOutIcon"
-      class="!bg-red-500"
+      class="!bg-blue-500"
       icon
       variant="flat"
       @click="handleLogout"

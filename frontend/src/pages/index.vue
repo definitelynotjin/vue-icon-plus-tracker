@@ -21,7 +21,7 @@
     (v: string) => (v && v.length <= 6) || 'Password must be less than 6 characters',
   ]
 
-  function handleLogin () {
+  function handleLogin() {
     if (username.value === 'Admin' && password.value === '1234') {
       localStorage.setItem('isLoggedIn', 'true')
       router.push('/dashboard')
@@ -30,28 +30,27 @@
         title: 'Invalid Credentials!',
         description: 'Make sure you inserted the username or password correctly',
         variant: 'destructive',
-
       })
     }
   }
 </script>
 
 <template>
-  <v-app class="!bg-gradient-to-r from-blue-800 to-gray-800 ">
+  <v-app class="!bg-gradient-to-r from-blue-800 to-gray-800">
     <v-row class="ma-10 pa-10">
-      <v-col class="bg-gray-900 rounded-tl-2xl rounded-bl-2xl d-flex ">
+      <v-col class="bg-gray-900 rounded-tl-2xl rounded-bl-2xl d-flex">
         <v-row align="center">
           <v-img :height="150" :src="Logo" :width="150" />
         </v-row>
       </v-col>
-      <v-col class="bg-slate-100 rounded-tr-2xl rounded-br-2xl flex  items-center justify-center">
-        <v-form v-model="valid" class="w-full !text-gray-900 flex flex-col gap-4 max-w-md" @submit.prevent="handleLogin">
-          <h1 class="text-h3 font-bold text-gray-700">
-            Login
-          </h1>
-          <h2 class="top-auto text-gray-500">
-            Enter your user valid username and password.
-          </h2>
+      <v-col class="bg-slate-100 rounded-tr-2xl rounded-br-2xl flex items-center justify-center">
+        <v-form
+          v-model="valid"
+          class="w-full !text-gray-900 flex flex-col gap-4 max-w-md"
+          @submit.prevent="handleLogin"
+        >
+          <h1 class="text-h3 font-bold text-gray-700">Login</h1>
+          <h2 class="top-auto text-gray-500">Enter your user valid username and password.</h2>
           <v-text-field
             v-model="username"
             bg-color="blue-grey-darken-3"
@@ -66,7 +65,7 @@
             v-model="password"
             :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
             bg-color="blue-grey-darken-3"
-            class="!text-blue-900 "
+            class="!text-blue-900"
             :counter="6"
             :elevation="24"
             label="Password"
