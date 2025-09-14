@@ -1,60 +1,40 @@
 <script setup>
-  import { ref, computed } from 'vue'
+  import { ref, onMounted } from 'vue'
+  import { taskData } from '../services/api.ts'
 
-  const tasks = ref([
-    {
-      title: 'Setup project',
-      content: 'Initialize Vue + Vuetify project',
-      assignee: 'Alice',
-      dueDate: { from: '2025-09-21', to: '2025-09-22' },
-    },
-    {
-      title: 'Design login page',
-      content: 'Create responsive login UI',
-      assignee: 'Bob',
-      dueDate: { from: '2025-09-23', to: '2025-09-25' },
-    },
-    {
-      title: 'Implement authentication',
-      content: 'Add JWT login & register',
-      assignee: 'Charlie',
-      dueDate: { from: '2025-09-22', to: '2025-09-24' },
-    },
-    {
-      title: 'Build dashboard',
-      content: 'Add charts and stats overview',
-      assignee: 'Diana',
-      dueDate: { from: '2025-09-21', to: '2025-09-25' },
-    },
-    {
-      title: 'Deploy app',
-      content: 'Setup CI/CD with Vercel',
-      assignee: 'Eve',
-      dueDate: { from: '2025-09-22', to: '2025-09-24' },
-    },
-  ])
+  const myTask = ref(null)
+
+  onMounted(async () => {
+    const url = `${import.meta.env.VITE_API_URL}/tasks`
+    // const formattedDate = ref()
+    myTask.value = await taskData(url)
+  })
 </script>
 
 <template>
   <v-app>
-    <main class="dashboard-base-wallpaper">
+    <main class="dashboard-base-wallpaper bg-gray-900">
       <v-container class="dashboard-outer-wallpaper">
-        <h1>Task List</h1>
-        <v-table>
+        <h1 class="task-title">Task List</h1>
+        <v-table
+          hover
+          comfortable
+          class="dashboard-table !bg-gradient-to-r from-gray-800 to-gray-900"
+        >
           <thead>
             <tr>
-              <th class="text-left">Title</th>
-              <th class="text-left">Content</th>
-              <th class="text-left">Assignee</th>
-              <th class="text-left">Due Date</th>
+              <th class="table-text">Title</th>
+              <th class="table-text">Content</th>
+              <th class="table-text">Assignee</th>
+              <th class="table-text">Due Date</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="task in tasks" :key="task.title">
+            <tr v-for="task in myTask" :key="task.title">
               <td>{{ task.title }}</td>
-              <td>{{ task.content }}</td>
+              <td class="task-content">{{ task.content }}</td>
               <td>{{ task.assignee }}</td>
-              <td>{{ task.dueDate }}</td>
+              <td>{{ task.due_date }}</td>
             </tr>
           </tbody>
         </v-table>
@@ -64,13 +44,35 @@
 </template>
 
 <style>
+  h1.task-title {
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  td.task-content {
+    margin-top: 10px;
+    white-space: pre-line;
+    line-height: 2.2rem;
+  }
+
+  th.table-text {
+    text-align: left;
+    font-weight: bold;
+    font-size: 20px;
+    color: grey;
+  }
   .dashboard-base-wallpaper {
     height: 100vh;
-    background-color: green;
+  }
+  .v-table.dashboard-table {
+    padding: 20px;
+    color: slate;
+    border-radius: 20px;
+    font-size: 17px;
   }
 
   .dashboard-outer-wallpaper {
-    background-color: gray;
+    border-radius: 10px;
     margin-top: 50px;
   }
 </style>

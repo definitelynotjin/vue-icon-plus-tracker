@@ -5,11 +5,6 @@ export const useDashboardStore = defineStore('tasks',{
   state: () =>({
     tasks: [],
   }),
-  actions: {
-    async fetchTasks(){
-
-    }
-  },
   getters: {
 
   }

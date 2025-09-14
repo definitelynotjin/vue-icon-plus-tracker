@@ -30,7 +30,7 @@
 </script>
 
 <template>
-  <v-navigation-drawer color="gray-darken-5" expand-on-hover permanent rail rail-width="80">
+  <v-navigation-drawer class="!bg-gray-800" expand-on-hover permanent rail rail-width="80">
     <v-list>
       <v-list-item class="flex justify-center w-full">
         <v-img :height="50" :src="Logo" :width="50" />

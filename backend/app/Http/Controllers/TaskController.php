@@ -8,6 +8,9 @@ use App\Http\Requests\UpdateTaskRequest;
 
 class TaskController extends Controller
 {
+    public function index(){
+        return response()->json(Task::all());
+    }
     public function store(StoreTaskRequest $request)
     {
         $data = $request->validate([
