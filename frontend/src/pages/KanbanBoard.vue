@@ -1,37 +1,19 @@
-<script setup>
-  import { ref, onMounted } from 'vue'
-  import { taskData } from '../services/api.ts'
-
-  const myTask = ref(null)
-
-  onMounted(async () => {
-    const url = `${import.meta.env.VITE_API_URL}/tasks`
-    // const formattedDate = ref()
-    myTask.value = await taskData(url)
-  })
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <v-app>
     <main class="board-base-wallpaper bg-gray-900">
-      <v-container class="board-outer-wallpaper"> </v-container>
+      <v-container class="board-outer-wallpaper">
+        <TaskColumn />
+      </v-container>
     </main>
   </v-app>
 </template>
 
-<style>
-  .board-base-wallpaper {
-    height: 100vh;
-  }
-  .v-table.dashboard-table {
-    color: slate;
-    border-radius: 20px;
-    font-size: 17px;
-  }
-
+<style lang="css">
   .board-outer-wallpaper {
+    width: auto;
     border-radius: 10px;
     background-color: red;
-    margin-top: 50px;
   }
 </style>

@@ -36,7 +36,7 @@
 </script>
 
 <template>
-  <v-app class="!bg-gradient-to-r from-blue-800 to-gray-800">
+  <v-app class="!bg-gradient-to-r from-blue-800 to-gray-800 hide-scrollbar">
     <v-row class="ma-10 pa-10">
       <v-col class="bg-gray-900 rounded-tl-2xl rounded-bl-2xl d-flex">
         <v-row align="center">
@@ -92,3 +92,9 @@
     </v-row>
   </v-app>
 </template>
+<style lang="css">
+  .v-row.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

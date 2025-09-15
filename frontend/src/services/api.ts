@@ -19,9 +19,7 @@ export async function taskData(url: string){
     const response = await fetch(url)
     const data = await response.json()
     const formattedTask =  Array.isArray(data) ? data.map(formattedTaskDate) : formattedTaskDate(data)
-    console.log(data)
     taskInfo.value = formattedTask
-    console.log('this is the new date', formattedTaskDate)
     console.log('this is the new date with the new task ', formattedTask)
     return formattedTask
   } catch (e){

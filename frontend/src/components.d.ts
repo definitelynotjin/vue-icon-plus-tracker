@@ -10,6 +10,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppFooter: typeof import('./components/AppFooter.vue')['default']
     AppSidebar: typeof import('./components/AppSidebar.vue')['default']
+    BreadCrumbs: typeof import('./components/BreadCrumbs.vue')['default']
     Button: typeof import('./components/ui/button/Button.vue')['default']
     DashboardTest: typeof import('./components/DashboardTest.vue')['default']
     HeaderBar: typeof import('./components/HeaderBar.vue')['default']
@@ -61,6 +62,8 @@ declare module 'vue' {
     TableHead: typeof import('./components/ui/table/TableHead.vue')['default']
     TableHeader: typeof import('./components/ui/table/TableHeader.vue')['default']
     TableRow: typeof import('./components/ui/table/TableRow.vue')['default']
+    TaskCard: typeof import('./components/TaskCard.vue')['default']
+    TaskColumn: typeof import('./components/TaskColumn.vue')['default']
     Toast: typeof import('./components/ui/toast/Toast.vue')['default']
     ToastAction: typeof import('./components/ui/toast/ToastAction.vue')['default']
     ToastClose: typeof import('./components/ui/toast/ToastClose.vue')['default']

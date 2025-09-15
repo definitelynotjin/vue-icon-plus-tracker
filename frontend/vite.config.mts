@@ -6,15 +6,21 @@ import Fonts from 'unplugin-fonts/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
+import vueDevTools from 'vite-plugin-vue-devtools'
+import fs from 'fs'
+import gracefulFs from 'graceful-fs'
+
 // Utilities
 import { defineConfig } from 'vite'
 
 import Layouts from 'vite-plugin-vue-layouts-next'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
+gracefulFs.gracefulify(fs)
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    vueDevTools(),
     VueRouter({
       dts: 'src/typed-router.d.ts',
     }),
@@ -74,6 +80,15 @@ export default defineConfig({
     extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
   },
   server: {
+    watch : {
+      ignored: ["**/node_modules/**", "**/.git/**", "**/dist/**"],
+      usePolling:false,
+      interval : 100,
+      awaitWriteFinish: {
+        stabilityThreshold: 500,
+        pollInterval: 100,
+      }
+    },
     port: 3000,
   },
   css: {

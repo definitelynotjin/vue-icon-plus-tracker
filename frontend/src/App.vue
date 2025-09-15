@@ -17,6 +17,7 @@
       <VueSidebar />
       <Navbar />
       <main>
+        <!-- <BreadCrumbs /> -->
         <router-view />
       </main>
     </div>

@@ -3,6 +3,7 @@
   import { ref } from 'vue'
   import { useRouter } from 'vue-router'
   import Logo from '../assets/logo.png'
+
   const menuItems = [
     {
       title: 'Dashboard',
@@ -30,18 +31,18 @@
 </script>
 
 <template>
-  <v-navigation-drawer class="!bg-gray-800" expand-on-hover permanent rail rail-width="80">
+  <v-navigation-drawer class="!bg-gray-800 sidebar" expand-on-hover permanent rail rail-width="80">
     <v-list>
-      <v-list-item class="flex justify-center w-full">
+      <v-list-item class="d-flex justify-center">
         <v-img :height="50" :src="Logo" :width="50" />
       </v-list-item>
       <v-list>
-        <v-divider color="info" :length="50" :thickness="5" />
+        <v-divider class="sidebar-divider" :length="100" :thickness="5" />
         <v-list-item
           v-for="item in menuItems"
           :key="item.value"
           active-class="primary--text"
-          class="pl-7"
+          class="pl-7 sidebar-icons"
           :prepend-icon="item.icon"
           :title="item.title"
           @click="selectMenu(item.value)"
@@ -50,3 +51,13 @@
     </v-list>
   </v-navigation-drawer>
 </template>
+
+<style lang="css">
+  .v-list-item.sidebar-icons {
+  }
+
+  .v-divider.sidebar-divider {
+    background-color: red;
+    color: green;
+  }
+</style>
